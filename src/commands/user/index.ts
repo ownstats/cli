@@ -111,7 +111,6 @@ export default class UserCommand extends Command {
 
     if (action === 'create') {
       const { email, password } = await this.promptUserCredentials(true)
-      this.log(email, password)
 
       try {
         ux.action.start('Creating user')
@@ -138,8 +137,6 @@ export default class UserCommand extends Command {
           Password: password,
           Permanent: true,
         }))
-
-        this.log(JSON.stringify(r1, null, 2), JSON.stringify(r2, null, 2))
 
         ux.action.stop('User created successfully!')
       } catch (error) {
