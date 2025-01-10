@@ -18,10 +18,11 @@ export async function createProjectFile (projectName: string, targetDir: string,
       profile: 'default',
     },
     stacksDeployed: {
-      frontend: false,
       backend: false,
     },
-    cognito: {}
+    cognito: {},
+    frontend: {},
+    backend: {}
   }
 
   writeFileSync(`${targetDir}/${globals.projectFileName}`, JSON.stringify(template, null, 2));

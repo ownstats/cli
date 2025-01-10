@@ -1,7 +1,7 @@
 import { Command, Args } from '@oclif/core'
 import { ux } from '@oclif/core'
 import StorageHelper from '../../helpers/storage'
-import { runServerlessCommand, runNpmCommand, isProjectFolder } from '../../helpers/utils'
+import { runServerlessCommand, runNpmCommand, isProjectFolder, runNpmInstall } from '../../helpers/utils'
 import { 
   checkDeploymentBucket, 
   createDeploymentBucket, 
@@ -12,7 +12,7 @@ import { persistConfig } from '../../helpers/config'
 
 const allowedStackNames = ['frontend', 'backend', 'client']
 type StackName = typeof allowedStackNames[number]
-type StackAction = 'deploy' | 'package' | 'remove' | 'sync' | 'build'
+type StackAction = 'deploy' | 'package' | 'remove' | 'sync' | 'build' | 'install'
 
 interface BucketParams {
   projectId: string
@@ -25,7 +25,7 @@ export default class StackCommand extends Command {
   static override args = {
     action: Args.string({
       description: 'The action to perform',
-      options: ['deploy', 'package', 'remove', 'sync', 'build'],
+      options: ['deploy', 'package', 'remove', 'sync', 'build', 'install'],
       required: true,
     }),
     name: Args.string({
@@ -148,6 +148,8 @@ export default class StackCommand extends Command {
       } else {
         throw new Error("The 'ownstats stack build' command can only be run for the 'frontend' or 'client' stack! Exiting...")
       }
+    } else if (action === 'install') {
+      await runNpmInstall(`${process.cwd()}/${stackName}`)
     }
   }
 }

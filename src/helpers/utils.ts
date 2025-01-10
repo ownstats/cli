@@ -84,7 +84,7 @@ export function runNpmCommand(dir: string, command: string) {
   });
 }
 
-export function runPnpmCommand(dir: string, command: string ) {
+export function runNpmInstall(dir: string) {
   if (!dir) {
     throw new Error(`Service directory not provided`);
   }
@@ -92,9 +92,10 @@ export function runPnpmCommand(dir: string, command: string ) {
     ...process.env,
   }
 
-  return execAsync(`pnpm ${command}`, {
+  return execAsync(`npm i`, {
     encoding: null,
     env: env,
     cwd: dir,
   });
 }
+

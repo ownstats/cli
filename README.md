@@ -105,7 +105,7 @@ USAGE
   $ ownstats stack ACTION NAME
 
 ARGUMENTS
-  ACTION  (deploy|package|remove|sync|build) The action to perform
+  ACTION  (deploy|package|remove|sync|build|install) The action to perform
   NAME    (frontend|backend|client) The stack name
 
 DESCRIPTION
