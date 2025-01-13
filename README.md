@@ -1,7 +1,7 @@
 ownstats
 =================
 
-CLI for managing a https://ownstats.com instance
+CLI for managing an OwnStats (https://ownstats.com) instance, providing a privacy-focused selfhosted web analytics solution on AWS.
 
 [![Version](https://img.shields.io/npm/v/ownstats.svg)](https://npmjs.org/package/ownstats)
 
@@ -52,7 +52,7 @@ DESCRIPTION
   Configure the project settings
 ```
 
-_See code: [src/commands/config/index.ts](https://github.com/ownstats/cli-v2/blob/v0.1.0/src/commands/config/index.ts)_
+_See code: [src/commands/config/index.ts](https://github.com/ownstats/cli/blob/v0.1.0/src/commands/config/index.ts)_
 
 ## `ownstats help [COMMAND]`
 
@@ -94,7 +94,7 @@ DESCRIPTION
   Create a local Ownstats installation from the repository
 ```
 
-_See code: [src/commands/installation/index.ts](https://github.com/ownstats/cli-v2/blob/v0.1.0/src/commands/installation/index.ts)_
+_See code: [src/commands/installation/index.ts](https://github.com/ownstats/cli/blob/v0.1.0/src/commands/installation/index.ts)_
 
 ## `ownstats stack ACTION NAME`
 
@@ -112,7 +112,7 @@ DESCRIPTION
   Interact with OwnStats stacks within an installation
 ```
 
-_See code: [src/commands/stack/index.ts](https://github.com/ownstats/cli-v2/blob/v0.1.0/src/commands/stack/index.ts)_
+_See code: [src/commands/stack/index.ts](https://github.com/ownstats/cli/blob/v0.1.0/src/commands/stack/index.ts)_
 
 ## `ownstats user ACTION`
 
@@ -129,7 +129,7 @@ DESCRIPTION
   Manage OwnStats user
 ```
 
-_See code: [src/commands/user/index.ts](https://github.com/ownstats/cli-v2/blob/v0.1.0/src/commands/user/index.ts)_
+_See code: [src/commands/user/index.ts](https://github.com/ownstats/cli/blob/v0.1.0/src/commands/user/index.ts)_
 
 ## `ownstats verify`
 
@@ -151,5 +151,5 @@ EXAMPLES
   Successfully authenticated with AWS using profile: default
 ```
 
-_See code: [src/commands/verify/index.ts](https://github.com/ownstats/cli-v2/blob/v0.1.0/src/commands/verify/index.ts)_
+_See code: [src/commands/verify/index.ts](https://github.com/ownstats/cli/blob/v0.1.0/src/commands/verify/index.ts)_
 <!-- commandsstop -->
