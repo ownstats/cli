@@ -1,7 +1,7 @@
 {
   "name": "ownstats",
   "description": "CLI for managing an OwnStats (https://ownstats.com) instance, providing a privacy-focused selfhosted web analytics solution on AWS",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Tobias Müller <tobilg@gmail.com>",
   "bin": {
     "ownstats": "./bin/run.js"
@@ -21,7 +21,8 @@
     "env-paths": "2.2.1",
     "fs-extra": "^11.2.0",
     "inquirer": "^12.3.0",
-    "nested-property": "^4.0.0"
+    "nested-property": "^4.0.0",
+    "terminal-link": "2.1.1"
   },
   "devDependencies": {
     "@oclif/prettier-config": "^0.2.1",
@@ -93,7 +94,7 @@
       }
     }
   },
-  "repository":{
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/ownstats/cli.git"
   },
