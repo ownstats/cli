@@ -1,7 +1,7 @@
 {
   "name": "ownstats",
   "description": "CLI for managing an OwnStats (https://ownstats.com) instance, providing a privacy-focused selfhosted web analytics solution on AWS",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Tobias Müller <tobilg@gmail.com>",
   "bin": {
     "ownstats": "./bin/run.js"

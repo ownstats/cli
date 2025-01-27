@@ -7,6 +7,7 @@ CLI for managing an OwnStats (https://ownstats.com) instance, providing a privac
 
 <!-- toc -->
 * [Usage](#usage)
+* [Guide](#guide)
 * [Commands](#commands)
 <!-- tocstop -->
 # Usage
@@ -23,6 +24,127 @@ USAGE
 ...
 ```
 <!-- usagestop -->
+
+# Guide
+## Creating a local OwnStats installation  
+The first step is to create a local OwnStats installation. This can be done by running the following command:
+
+```bash
+ownstats installation create -d -p ~/ -n ownstats-installation
+```
+
+This will create a new directory called `ownstats-installation` in your home directory (assuming you're on a Unix-like operating system), and initialize a new OwnStats installation in it (see the [installation](#ownstats-installation-action) command). 
+
+It will contain the current `main` branch of the [OwnStats repository](https://github.com/ownstats/ownstats).
+
+## Configuring your OwnStats installation
+
+You can now configure your OwnStats installation with the the [config](#ownstats-config-action-property-value) command. 
+
+For example, you can set the AWS region you want to use (default: `us-east-1`):
+
+```bash
+ownstats config set aws-region eu-west-1
+```
+
+Or, you can set the AWS profile you want to use (default: `default`):
+
+```bash
+ownstats config set aws-profile my-profile
+```
+
+You can also set the stage you want to use (default: `prd`):
+
+```bash
+ownstats config set stage prd
+```
+
+## Deploying your OwnStats backend
+
+You need to install the dependencies for the OwnStats backend first, before you can deploy it. This can be done by running the following command:
+
+```bash
+ownstats stack backend install
+```
+
+After that, you can deploy the OwnStats backend by running the following command:
+
+```bash
+ownstats stack backend deploy
+```
+
+Usually, this will take 5-10 minutes. See also the [stack](#ownstats-stack-action-name) command.
+
+## Deploying your OwnStats frontend
+
+You need to install the dependencies for the OwnStats frontend first, before you can deploy/sync it to your AWS account. This can be done by running the following command:
+
+```bash
+ownstats stack frontend install
+```
+
+Next, you need to build the frontend application. This can be done by running the following command:
+
+```bash
+ownstats stack frontend build
+```
+
+This will create an optimized bundle in the `frontend/dist` directory. After that, you can deploy/sync the OwnStats frontend by running the following command:
+
+```bash
+ownstats stack frontend sync
+```
+
+This will synchonize the frontend application in the `frontend/dist` directory to the frontend S3 bucket, which backs the frontend CloudFront distribution.
+
+## Creating the OwnStats tracking client
+
+Next, the OwnStats tracking client needs to be created. This is divided into multiple steps.
+
+First, you need to install the dependencies for the OwnStats tracking client. This can be done by running the following command:
+
+```bash
+ownstats stack client install
+```
+
+After that, you need to build the tracking client. This can be done by running the following command:
+
+```bash
+ownstats stack client build
+```
+
+This will create an optimized bundle in the `client/dist` directory. After that, you can deploy/sync the OwnStats tracking client by running the following command:
+
+```bash
+ownstats stack client sync
+```
+
+It's automatically configured by the backend stack outputs (e.g. CloudFront URL for pushing the tracking data to). 
+
+The client uses the [analytics](https://www.npmjs.com/package/analytics) library, which is a lightweight and easy-to-use library for tracking events. You could also customize the client to send the tracking data to additional destinations. Please refer to the [analytics](https://getanalytics.io/) documentation for more information.
+
+## Creating a user for OwnStats
+
+You need to create a user for OwnStats in your AWS account. This can be done by running the following command:
+
+```bash
+ownstats user create
+```
+
+You'll be asked to enter a **email address** and **password**. This will create a user in the Cognito user pool, which is used for logging in to the OwnStats frontend.
+
+Please refer to the [user](#ownstats-user-action) command for more information regarding the password policy. This is the final step for the OwnStats deployment in your AWS account. 
+
+## Accessing the OwnStats frontend
+
+To access the OwnStats frontend, you can use the following command:
+
+```bash
+ownstats stack frontend open
+```
+
+This will show a link to your OwnStats frontend in your terminal. Click on it, and enter the username and password you created in the previous step. This will take you to the OwnStats frontend, where you can start tracking your data.
+
 # Commands
 <!-- commands -->
 * [`ownstats config ACTION PROPERTY [VALUE]`](#ownstats-config-action-property-value)
